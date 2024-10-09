@@ -1,6 +1,6 @@
 ﻿namespace EntityFrameworkDbFirst
 {
-    partial class Form1
+    partial class FrmCategory
     {
         /// <summary>
         /// Required designer variable.

@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace EntityFrameworkDbFirst
 {
-    public partial class FrmProduct : Form
+    public partial class FrmProduct : System.Windows.Forms.Form
     {
         public FrmProduct()
         {
@@ -57,6 +57,43 @@ namespace EntityFrameworkDbFirst
             value.ProductId = int.Parse(cBoxCategory.SelectedValue.ToString());
             db.SaveChanges();
             ProductList();
+        }
+
+        private void FrmProduct_Load(object sender, EventArgs e)
+        {
+            var values = db.TblCategory.ToList();
+            cBoxCategory.DisplayMember = "CategoryName";
+            cBoxCategory.ValueMember = "CategoryId";
+            cBoxCategory.DataSource = values;
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void btnProductListWithCategory_Click(object sender, EventArgs e)
+        {
+           var value = db.TblProduct.Join(db.TblCategory,
+                product => product.ProductId,
+                category => category.CategoryId,
+                (product, category) => new
+                {
+                    ProductId = product.ProductName,
+                    ProductName = category.CategoryName,
+                    ProductPrice = product.ProductPrice,
+                    ProductStock = product.ProductStock,
+                    CategoryId = product.ProductId,
+                    CategoryName = category.CategoryName
+                }).ToList();
+            dataGridView1.DataSource = value;
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            var value = db.TblProduct.Where(x => x.ProductName == txtProductName.Text).ToList();
+            dataGridView1.DataSource = value;
         }
     }
 }

@@ -44,6 +44,7 @@
             this.txtProductId = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnProductListWithCategory = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,6 +56,7 @@
             this.btnSearch.TabIndex = 42;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // cBoxCategory
             // 
@@ -110,14 +112,15 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(293, 12);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(553, 279);
+            this.dataGridView1.Size = new System.Drawing.Size(798, 279);
             this.dataGridView1.TabIndex = 35;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // btnList
             // 
             this.btnList.Location = new System.Drawing.Point(147, 186);
             this.btnList.Name = "btnList";
-            this.btnList.Size = new System.Drawing.Size(129, 23);
+            this.btnList.Size = new System.Drawing.Size(64, 23);
             this.btnList.TabIndex = 34;
             this.btnList.Text = "List";
             this.btnList.UseVisualStyleBackColor = true;
@@ -185,11 +188,22 @@
             this.label1.TabIndex = 27;
             this.label1.Text = "Product ID:";
             // 
+            // btnProductListWithCategory
+            // 
+            this.btnProductListWithCategory.Location = new System.Drawing.Point(217, 186);
+            this.btnProductListWithCategory.Name = "btnProductListWithCategory";
+            this.btnProductListWithCategory.Size = new System.Drawing.Size(59, 23);
+            this.btnProductListWithCategory.TabIndex = 43;
+            this.btnProductListWithCategory.Text = "List";
+            this.btnProductListWithCategory.UseVisualStyleBackColor = true;
+            this.btnProductListWithCategory.Click += new System.EventHandler(this.btnProductListWithCategory_Click);
+            // 
             // FrmProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(861, 301);
+            this.ClientSize = new System.Drawing.Size(1103, 301);
+            this.Controls.Add(this.btnProductListWithCategory);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.cBoxCategory);
             this.Controls.Add(this.label5);
@@ -208,6 +222,7 @@
             this.Controls.Add(this.label1);
             this.Name = "FrmProduct";
             this.Text = "FrmProduct";
+            this.Load += new System.EventHandler(this.FrmProduct_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -232,5 +247,6 @@
         private System.Windows.Forms.TextBox txtProductId;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnProductListWithCategory;
     }
 }
