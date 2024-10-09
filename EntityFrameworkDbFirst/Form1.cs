@@ -21,5 +21,43 @@ namespace EntityFrameworkDbFirst
         {
 
         }
+
+        DbBusinessEntities db = new DbBusinessEntities();
+        
+        void CategoryList()
+        {
+            dataGridView1.DataSource = db.TblCategory.ToList();
+        }
+        private void btnList_Click(object sender, EventArgs e)
+        {
+            CategoryList();
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            TblCategory category = new TblCategory();
+            category.CategoryName = txtCategoryName.Text;
+            db.TblCategory.Add(category);
+            db.SaveChanges();
+            CategoryList();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(txtCategoryId.Text);
+            var value = db.TblCategory.Find(id);
+            db.TblCategory.Remove(value);
+            db.SaveChanges();
+            CategoryList();
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(txtCategoryId.Text);
+            var value = db.TblCategory.Find(id);
+            value.CategoryName = txtCategoryName.Text;
+            db.SaveChanges();
+            CategoryList();
+        }
     }
 }
